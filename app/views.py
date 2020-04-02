@@ -12,3 +12,7 @@ from app import *
 @app.route('/index', methods=['GET'])
 def route_home():
     return "Helloooo world!\n"
+@app.route('/brice', methods=['GET'])
+def route_brice():
+    return render_template("index.html", title="BRICE TITLE",
+                           myContent="BRICE CONTENT")
