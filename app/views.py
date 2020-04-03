@@ -8,6 +8,7 @@
 
 from app import *
 from flask import jsonify
+#import pymysql as sql
 
 @app.route('/', methods=['GET'])
 @app.route('/index', methods=['GET'])
