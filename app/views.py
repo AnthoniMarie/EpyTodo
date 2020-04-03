@@ -7,6 +7,7 @@
 ##
 
 from app import *
+from flask import jsonify
 
 @app.route('/', methods=['GET'])
 @app.route('/index', methods=['GET'])
@@ -16,3 +17,10 @@ def route_home():
 def route_brice():
     return render_template("index.html", title="BRICE TITLE",
                            myContent="BRICE CONTENT")
+#@app.route('/user')
+#def route_all_users():
+#    result = ""
+#    try:
+
+
+
