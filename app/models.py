@@ -7,9 +7,16 @@
 ##
 
 from flask import *
+from config import *
+from app import *
+import pymysql as sql
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy(app)
+
+class User_gesture(object):
+    def user_add(self):
+        request = cursor.execute("SELECT * FROM user");
 
 class Content(db.Model):
     id = db.Column(db.Interger, primary_key=True)
