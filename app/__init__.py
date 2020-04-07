@@ -14,12 +14,12 @@ import pymysql as sql
 app = Flask(__name__)
 app.config.from_object('config')
 
-connect = sql.connect(host=DATABASE_HOST,
+db_linkage = sql.connect(host=DATABASE_HOST,
                       db=DATABASE_NAME,
                       user=DATABASE_USER,
                       password=DATABASE_PASS,
                       unix_socket=DATABASE_SOCK)
-cursor = connect.cursor()
+cursor = db_linkage.cursor()
 
 def test():
     return app
