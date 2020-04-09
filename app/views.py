@@ -7,8 +7,10 @@
 ##
 
 from app import *
+from app import controller
+from app import models
 from flask import jsonify
-#import pymysql as sql
+import pymysql as sql
 
 @app.route('/', methods=['GET'])
 @app.route('/index', methods=['GET'])
@@ -18,6 +20,9 @@ def route_home():
 def route_brice():
     return render_template("index.html", title="BRICE TITLE",
                            myContent="BRICE CONTENT")
+@app.route('/api/users/all', methods=['GET'])
+def get_users_list():
+    return models.User_gesture.get_users_list(db_linkage)
 #@app.route('/user')
 #def route_all_users():
 #    result = ""
