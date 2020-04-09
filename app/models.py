@@ -17,6 +17,9 @@ class User_gesture(object):
         data = cursor.fetchall()
         return jsonify(username=data)
     def user_add(data):
-        cursor.execute("INSERT INTO user (username, password) VALUES (%s, %s)", ("test_username", "test_password"))
-        return jsonify(result="successfully created account")
+        try:
+            cursor.execute("INSERT INTO user (username, password) VALUES (%s, %s)", ("test_username", "test_password"))
+            return jsonify(result="successfully created account")
+        except:
+            return jsonify(error="an error occured")
 
