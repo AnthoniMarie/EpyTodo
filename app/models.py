@@ -15,6 +15,8 @@ class User_gesture(object):
     def get_users_list(data):
         request = cursor.execute("SELECT * FROM user;")
         data = cursor.fetchall()
-        return {"username":data}
+        return jsonify(username=data)
     def user_add(data):
-        request = cursor.execute("SELECT * FROM user where username = %s");
+        cursor.execute("INSERT INTO user (username, password) VALUES (%s, %s)", ("test_username", "test_password"))
+        return jsonify(result="successfully created account")
+
