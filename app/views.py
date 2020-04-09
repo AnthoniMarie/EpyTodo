@@ -15,7 +15,8 @@ import pymysql as sql
 @app.route('/', methods=['GET'])
 @app.route('/index', methods=['GET'])
 def route_home():
-    return "Helloooo world!\n"
+    return render_template("index.html", title="EPyTodo :)",
+                           myContent="What a beautiful To do list")
 @app.route('/brice', methods=['GET'])
 def route_brice():
     return render_template("index.html", title="BRICE TITLE",
