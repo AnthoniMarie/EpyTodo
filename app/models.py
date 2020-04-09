@@ -10,6 +10,7 @@ from flask import *
 from config import *
 from app import *
 import pymysql as sql
+import hashlib
 
 class User_gesture(object):
     def get_users_list(data):
