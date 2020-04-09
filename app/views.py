@@ -23,6 +23,9 @@ def route_brice():
 @app.route('/api/users/all', methods=['GET'])
 def get_users_list():
     return models.User_gesture.get_users_list(db_linkage)
+@app.route('/api/users/add', methods=['POST'])
+def add_user():
+    return models.User_gesture.user_add(db_linkage)
 #@app.route('/user')
 #def route_all_users():
 #    result = ""
