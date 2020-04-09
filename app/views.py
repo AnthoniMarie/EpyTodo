@@ -29,7 +29,7 @@ def add_user():
     return models.User_gesture.user_add(db_linkage)
 @app.route('/register', methods=['GET', 'POST'])
 def add_user_noapi():
-    return render_template("register.html", title="EPyTodo | Connexion :)",
+    return render_template("auth/register.html", title="EPyTodo | Connexion :)",
                            myContent="Connexion à l'espace membre EPyTodo")
 #@app.route('/user')
 #def route_all_users():
