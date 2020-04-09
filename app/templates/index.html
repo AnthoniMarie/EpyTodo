@@ -1,31 +1,18 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="../static/script.js"></script>
-    <title>Epitech To Do list</title>
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../static/styles.css">
-    <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-</head>
-
-<body>
-    <div class="jquery-script-clear"></div>
-    <div class="container" id="main">
-        <h1>Epitech To Do list</h1>
-        <form role="form" id="main_input_box">
-            <label>
-                <input type="text" class="form-control" id="custom_textbox" name="Item" placeholder="Maybe you need a coffee?">
-                <input type="submit" value="Add" class="btn btn-primary add_button">
-            </label>
-        </form>
-        <form>
-            <ol class="list-group list_of_items">
-            </ol>
-        </form>
+{% include "partials/header.html" %}
+  <section id="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2>EPyTodo c'est quoi ?</h2>
+          <p class="lead">EPyTodo c'est votre nouveau moyen pour vous rappeler des tâches que vous avez à faire et ainsi mieux vous organiser.</p>
+          <ul>
+            <li>Facilité</li>
+            <li>Simplicité</li>
+            <li>Made in Epitech</li>
+          </ul>
+        </div>
+      </div>
     </div>
-</body>
+  </section>
 
-</html>
+{% include "partials/footer.html" %}
