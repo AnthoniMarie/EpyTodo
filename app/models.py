@@ -18,7 +18,8 @@ class User_gesture(object):
         return jsonify(username=data)
     def user_add(data):
         try:
-            cursor.execute("INSERT INTO user (username, password) VALUES (%s, %s)", ("test_username", "test_password"))
+            username = request.args['username']
+            cursor.execute("INSERT INTO user (username, password) VALUES (%s, %s)", (username, "pass_test"))
             cursor.connection.commit()
             return jsonify(result="successfully created account")
         except:
