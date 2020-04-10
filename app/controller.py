@@ -10,4 +10,6 @@ from app import app
 from flask import *
 import pymysql as sql
 
-
+class UserController(object):
+    def testing(data):
+        return 0
