@@ -17,10 +17,10 @@ class UserModel(object):
         request = cursor.execute("SELECT * FROM user;")
         data = cursor.fetchall()
         return jsonify(username=data)
-    def user_add(data):
+    def user_add(data, username):
         try:
-            username = request.form['username']
-            print ("LE USER =", username)
+            #username = request.form['username']
+            #print ("LE USER =", username)
             cursor.execute("INSERT INTO user (username, password) VALUES (%s, %s)", (username, "pass_test"))
             cursor.connection.commit()
             return jsonify(result="successfully created account")
