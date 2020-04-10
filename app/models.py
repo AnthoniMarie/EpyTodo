@@ -26,7 +26,7 @@ class UserModel(object):
             return jsonify(result="successfully created account")
         except:
             return jsonify(error="an error occured")
-        
+
 class TaskModel(object):
     def task_add(data):
         try:
@@ -36,8 +36,8 @@ class TaskModel(object):
             #begin = request.args['begin']
             #end = request.args['end']
             #status = request.args['status']
-            cursor.execute("INSERT INTO task (title) VALUES (%s)", (title)
+            cursor.execute("INSERT INTO task (title) VALUES (%s)", (title))
             cursor.connection.commit()
             return jsonify(result="Task created successfully")
         except:
-            return jsonify(result ="an error occured")class TaskModel(object):
+            return jsonify(result ="an error occured")
