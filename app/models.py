@@ -26,3 +26,17 @@ class UserModel(object):
         except:
             return jsonify(error="an error occured")
 
+class TaskModel(object):
+    def task_add(data):
+        try:
+            title = request.args['title']
+            #end  = cursor.execute("SELECT TIMESTAMP('2020-12-01');")
+            #begin = cursor.execute("SELECT TIMESTAMP('2001-09-11');")
+            #begin = request.args['begin']
+            #end = request.args['end']
+            #status = request.args['status']
+            cursor.execute("INSERT INTO task (title) VALUES (%s)", (title)
+            cursor.connection.commit()
+            return jsonify(result="Task created successfully")
+        except:
+            return jsonify(result ="an error occured")class TaskModel(object):
