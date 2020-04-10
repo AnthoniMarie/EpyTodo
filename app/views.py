@@ -23,10 +23,10 @@ def route_brice():
                            myContent="BRICE CONTENT")
 @app.route('/api/users/all', methods=['GET'])
 def get_users_list():
-    return models.User_gesture.get_users_list(db_linkage)
+    return models.UserModel.get_users_list(db_linkage)
 @app.route('/api/users/add', methods=['GET', 'POST'])
 def add_user():
-    return models.User_gesture.user_add(db_linkage)
+    return models.UserModel.user_add(db_linkage)
 @app.route('/register', methods=['GET', 'POST'])
 def add_user_noapi():
     return render_template("auth/register.html", title="EPyTodo | Connexion :)",

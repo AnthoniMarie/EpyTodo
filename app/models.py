@@ -12,7 +12,7 @@ from app import *
 import pymysql as sql
 import hashlib
 
-class User_gesture(object):
+class UserModel(object):
     def get_users_list(data):
         request = cursor.execute("SELECT * FROM user;")
         data = cursor.fetchall()
