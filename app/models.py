@@ -19,13 +19,14 @@ class UserModel(object):
         return jsonify(username=data)
     def user_add(data):
         try:
-            username = request.args['username']
+            username = request.form['username']
+            print ("LE USER =", username)
             cursor.execute("INSERT INTO user (username, password) VALUES (%s, %s)", (username, "pass_test"))
             cursor.connection.commit()
             return jsonify(result="successfully created account")
         except:
             return jsonify(error="an error occured")
-
+        
 class TaskModel(object):
     def task_add(data):
         try:
