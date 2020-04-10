@@ -30,6 +30,10 @@ def add_user():
 @app.route('/register', methods=['GET', 'POST'])
 def add_user_noapi():
     return controller.UserController.user_add(db_linkage)
+@app.route('/user/add/task', methods=['GET', 'POST'])
+def task_add():
+    return models.TaskModel.task_add(db_linkage)
+
     #return render_template("auth/register.html", title="EPyTodo | Connexion :)",
      #                      myContent="Connexion à l'espace membre EPyTodo")
 #@app.route('/user')
