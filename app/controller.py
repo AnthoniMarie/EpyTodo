@@ -15,8 +15,10 @@ import hashlib
 
 class UserController(object):
     def user_add(data):
+        username = "oui"
+        #username = request.form.get['username']
         #userna = UserModel.user_add(data)
         #username = request.args['username']
         #password = request.args['password']
         return render_template("auth/register.html", title="EPyTodo | Connexion :)",
-                      myContent="Connexion à l'espace membre EPyTodo", data=UserModel.user_add(data))
+                      myContent="Connexion à l'espace membre EPyTodo", data=UserModel.user_add(data, username))
