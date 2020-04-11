@@ -53,3 +53,8 @@ class UserController(object):
             flash("Déconnexion réussie", "success")
         return redirect('/')
 
+class TaskController(object):
+    def task_list(data):
+        return render_template("tasks/list.html", title="EPyTodo | Liste des tâches",
+                               myContent="view all user tasks")
+

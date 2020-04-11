@@ -28,7 +28,7 @@
           </li>
             {% if session['user_authenticated'] %}
                 <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="">Panel</a>
+            <a class="nav-link js-scroll-trigger" href="{{ url_for('task_list') }}">Panel</a>
           </li>
                 <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="{{ url_for('logout_user') }}">Déconnexion</a>
