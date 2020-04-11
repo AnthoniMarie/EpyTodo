@@ -48,4 +48,9 @@ class UserController(object):
             flash("Echec de la connexion, vérifiez les informations saisies", "error")
         return render_template("auth/login.html", title="EPyTodo | Connexion :)",
                                    myContent="connect a user")
+    def user_logout(data):
+        if session['user_authenticated'] == True:
+            del session['user_authenticated']
+            flash("Déconnexion réussie", "success")
+        return redirect('/')
 

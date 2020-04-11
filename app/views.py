@@ -32,6 +32,9 @@ def task_add():
 @app.route('/signin', methods=['GET', 'POST'])
 def login_user():
     return controller.UserController.user_login(db_linkage)
+@app.route('/signout', methods=['GET', 'POST'])
+def logout_user():
+    return controller.UserController.user_logout(db_linkage)
 
     #return render_template("auth/register.html", title="EPyTodo | Connexion :)",
      #                      myContent="Connexion à l'espace membre EPyTodo")
