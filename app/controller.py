@@ -9,6 +9,7 @@
 from app import *
 from flask import *
 from app.models import UserModel
+from app.models import TaskModel
 from config import *
 import pymysql as sql
 import hashlib
@@ -39,10 +40,8 @@ class UserController(object):
                 session['username'] = username
                 return redirect(url_for('route_home'))
                 flash("Connexion réussie :)", "success")
-                print("Work\n")
             else:
                 flash("Pseudonyme/Mot de passe incorrect :(", "error")
-                print("No\n")
         elif request.method == "POST":
             flash("Echec de la connexion, vérifiez les informations saisies", "error")
         return render_template("auth/login.html", title="EPyTodo | Connexion :)",
@@ -55,6 +54,7 @@ class UserController(object):
 
 class TaskController(object):
     def task_list(data):
+        popo = TaskModel.display_task(data)
         return render_template("tasks/list.html", title="EPyTodo | Liste des tâches",
-                               myContent="view all user tasks")
+                           myContent="view all user tasks"), render_template("task/list.html",task=popo)
 
