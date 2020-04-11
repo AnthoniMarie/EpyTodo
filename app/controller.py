@@ -36,8 +36,7 @@ class UserController(object):
         if request.method == "POST" and username and password:
             if UserModel.verif_user_credentials(data, username, password) != None:
                 session['user_authenticated'] = True
-                #session['id'] = user['id']
-                #session['username'] = user['username']
+                session['username'] = username
                 return redirect(url_for('route_home'))
                 flash("Connexion réussie :)", "success")
                 print("Work\n")
