@@ -33,15 +33,18 @@ class UserController(object):
         password = hashlib.sha3_256(str(request.form.get('password', data)).encode('utf-8')).hexdigest()
         username = request.form.get('username', data)
         #UserModel.verif_user_credentials(data, username, password)
-        if UserModel.verif_user_credentials(data, username, password) != None:
-            #session['Logged'] = True
-            #session['id'] = user['id']
-            #session['username'] = user['username']
-            flash("Successfully Connected :)")
-            print("Work\n")
-        else:
-            flash("Wrong Username/Password :(")
-            print("No\n")
+        if request.method == "POST" and username and password:
+            if UserModel.verif_user_credentials(data, username, password) != None:
+                #session['Logged'] = True
+                #session['id'] = user['id']
+                #session['username'] = user['username']
+                flash("Connexion réussie :)", "success")
+                print("Work\n")
+            else:
+                flash("Pseudonyme/Mot de passe incorrect :(", "error")
+                print("No\n")
+        elif request.method == "POST":
+            flash("Echec de la connexion, vérifiez les informations saisies", "error")
         return render_template("auth/login.html", title="EPyTodo | Connexion :)",
                                    myContent="connect a user")
 
