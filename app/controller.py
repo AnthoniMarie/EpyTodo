@@ -16,7 +16,8 @@ import hashlib
 class UserController(object):
     def user_add(data):
         username = request.form.get('username', data)
-        password = request.form.get('password', data)
+        password_ns = request.form.get('password', data)
+        password = hashlib.sha3_256(str(password_ns).encode('utf-8')).hexdigest()
         #username = request.args['username']
         #print ("Le user est :" + username)
         #print (request.form.getlist(key=db_linkage))
