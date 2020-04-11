@@ -29,3 +29,5 @@ class UserController(object):
         #password = request.args['password']
         return render_template("auth/register.html", title="EPyTodo | Connexion :)",
                       myContent="Connexion à l'espace membre EPyTodo", data=UserModel.user_add(data, username, password))
+    def user_login(data):
+        print ("test")
