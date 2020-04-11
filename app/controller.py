@@ -29,18 +29,19 @@ class UserController(object):
         return render_template("auth/register.html", title="EPyTodo | Inscription :)",
                       myContent="S'inscrire à l'espace membre EPyTodo")
     def user_login(data):
-        def user_login(data):
-            username = request.form.get('username', data)
-            password = request.form.get('password', data)
-            cursor.execute("SELECT * FROM user WHERE username = (%s) AND password = (%s)", (username, password,))
-            user = cursor.fetchone()
-            if (user):
-                session['Logged'] = True
-                session['id'] = user['id']
-                session['username'] = user['username']
-                flash("Successfully Connected :)")
-            else:
-                flash("Wrong Username/Password :(")
+        username = request.form.get('username', data)
+        password = request.form.get('password', data)
+        cursor.execute("SELECT * FROM user WHERE username = (%s) AND password = (%s)", (username, password,))
+        user = cursor.fetchone()
+        if (user):
+            session['Logged'] = True
+            session['id'] = user['id']
+            session['username'] = user['username']
+            flash("Successfully Connected :)")
+            print("Work\n")
+        else:
+            flash("Wrong Username/Password :(")
+            print("No\n")
         return render_template("auth/login.html", title="EPyTodo | Connexion :)",
                                    myContent="Connexion à l'espace membre EPyTodo")
 
