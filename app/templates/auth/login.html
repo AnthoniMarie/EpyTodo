@@ -1,12 +1,21 @@
 {% include "partials/header.html" %}
 
+<style>
+    .alert.success {
+  background-color: green;
+}
+
+.alert.error {
+  background-color: #ff7200;
+}
+</style>
 <div class="container">
 <div class="card bg-light">
 <article class="card-body mx-auto" style="max-width: 400px;">
-    {% with messages = get_flashed_messages() %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
-        {% for message in messages %}
-            <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        {% for category, message in messages %}
+            <div class="alert alert-primary {{ category }} alert-dismissible fade show" role="alert">
                 <span>{{ message }}</span>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
