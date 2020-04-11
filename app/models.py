@@ -57,3 +57,7 @@ class TaskModel(object):
             return jsonify(result="Task created successfully")
         except:
             return jsonify(result ="an error occured")
+    def display_task(data):
+        cursor.execute("SELECT * FROM task;")
+        data = cursor.fetchall()
+        return jsonify(task=data)
