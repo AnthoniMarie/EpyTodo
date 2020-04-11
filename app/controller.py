@@ -32,12 +32,11 @@ class UserController(object):
     def user_login(data):
         username = request.form.get('username', data)
         password = request.form.get('password', data)
-        cursor.execute("SELECT * FROM user WHERE username = (%s) AND password = (%s)", (username, password,))
-        user = cursor.fetchone()
-        if (user):
-            session['Logged'] = True
-            session['id'] = user['id']
-            session['username'] = user['username']
+        #UserModel.verif_user_credentials(data, username, password)
+        if UserModel.verif_user_credentials(data, username, password) != None:
+            #session['Logged'] = True
+            #session['id'] = user['id']
+            #session['username'] = user['username']
             flash("Successfully Connected :)")
             print("Work\n")
         else:

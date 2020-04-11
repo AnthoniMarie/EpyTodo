@@ -33,6 +33,16 @@ class UserModel(object):
                 return jsonify(result="successfully checked account")
         except:
             return jsonify(error="an error occured")
+    def verif_user_credentials(data, username, password):
+        try:
+            cursor.execute("SELECT * FROM user WHERE username = (%s) AND password = (%s)", (username, password,))
+            is_ok = cursor.fetchone()
+            if is_ok:
+                print ("user authenticated")
+                return jsonify(result="successfully checked user credentials")
+        except:
+            return jsonify(error="an error occured")
+
 class TaskModel(object):
     def task_add(data):
         try:
