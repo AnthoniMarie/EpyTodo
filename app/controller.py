@@ -35,7 +35,7 @@ class UserController(object):
         #UserModel.verif_user_credentials(data, username, password)
         if request.method == "POST" and username and password:
             if UserModel.verif_user_credentials(data, username, password) != None:
-                session['Logged'] = True
+                session['user_authenticated'] = True
                 #session['id'] = user['id']
                 #session['username'] = user['username']
                 return redirect(url_for('route_home'))
