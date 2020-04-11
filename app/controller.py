@@ -27,7 +27,9 @@ class UserController(object):
         #userna = UserModel.user_add(data)
         #username = request.args['username']
         #password = request.args['password']
-        return render_template("auth/register.html", title="EPyTodo | Connexion :)",
-                      myContent="Connexion à l'espace membre EPyTodo", data=UserModel.user_add(data, username, password))
+        return render_template("auth/register.html", title="EPyTodo | Inscription :)",
+                      myContent="S'inscrire à l'espace membre EPyTodo", data=UserModel.user_add(data, username, password))
     def user_login(data):
         print ("test")
+        return render_template("auth/login.html", title="EPyTodo | Connexion :)",
+                               myContent="Connexion à l'espace membre EPyTodo")
