@@ -16,11 +16,7 @@ import pymysql as sql
 @app.route('/index', methods=['GET'])
 def route_home():
     return render_template("index.html", title="EPyTodo :)",
-                           myContent="What a beautiful To do list")
-@app.route('/brice', methods=['GET'])
-def route_brice():
-    return render_template("index.html", title="BRICE TITLE",
-                           myContent="BRICE CONTENT")
+                           myContent="main page")
 @app.route('/api/users/all', methods=['GET'])
 def get_users_list():
     return models.UserModel.get_users_list(db_linkage)
