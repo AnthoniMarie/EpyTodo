@@ -19,14 +19,23 @@ class UserModel(object):
         return jsonify(username=data)
     def user_add(data, username, password):
         try:
-            #username = request.form['username']
-            #print ("LE USER =", username)
             cursor.execute("INSERT INTO user (username, password) VALUES (%s, %s)", (username, password))
             cursor.connection.commit()
             return jsonify(result="successfully created account")
         except:
             return jsonify(error="an error occured")
-
+    def verif_user_existence(data, username):
+        try:
+            cursor.execute("SELECT * FROM user WHERE username = (%s)", (username,))
+            existence = cursor.fetchone()
+            if existence:
+                print ("user exist")
+                return jsonify(result="successfully checked account")
+            else:
+                print ("user doesnt not exit")
+                return jsonify(result="error")
+        except:
+            return jsonify(error="an error occured")
 class TaskModel(object):
     def task_add(data):
         try:
