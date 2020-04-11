@@ -30,8 +30,8 @@ class UserController(object):
         return render_template("auth/register.html", title="EPyTodo | Inscription :)",
                       myContent="register a new user")
     def user_login(data):
+        password = hashlib.sha3_256(str(request.form.get('password', data)).encode('utf-8')).hexdigest()
         username = request.form.get('username', data)
-        password = request.form.get('password', data)
         #UserModel.verif_user_credentials(data, username, password)
         if UserModel.verif_user_credentials(data, username, password) != None:
             #session['Logged'] = True
