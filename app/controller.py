@@ -18,15 +18,33 @@ class UserController(object):
         username = request.form.get('username', None)
         password_ns = request.form.get('password', None)
         if request.method == "POST" and username and password_ns:
-            password = hashlib.sha3_256(str(password_ns).encode('utf-8')).hexdigest()
-            UserModel.user_add(data, username, password)
-            flash("Création de votre compte réussie :)", "success")
+            if UserModel.verif_user_existence(data, username) == None:
+                password = hashlib.sha3_256(str(password_ns).encode('utf-8')).hexdigest()
+                UserModel.user_add(data, username, password)
+                flash("Création de votre compte réussie :)", "success")
+            else:
+                flash ("Un compte avec ce pseudonyme est déjà occupé :/, copieur", "error")
         elif request.method == "POST":
             flash("Echec de la création de votre compte :(, vérifiez les informations saisies", "error")
 
         return render_template("auth/register.html", title="EPyTodo | Inscription :)",
-                      myContent="S'inscrire à l'espace membre EPyTodo")
+                      myContent="register a new user")
     def user_login(data):
-        print ("test")
+        password = hashlib.sha3_256(str(request.form.get('password', data)).encode('utf-8')).hexdigest()
+        username = request.form.get('username', data)
+        #UserModel.verif_user_credentials(data, username, password)
+        if request.method == "POST" and username and password:
+            if UserModel.verif_user_credentials(data, username, password) != None:
+                #session['Logged'] = True
+                #session['id'] = user['id']
+                #session['username'] = user['username']
+                flash("Connexion réussie :)", "success")
+                print("Work\n")
+            else:
+                flash("Pseudonyme/Mot de passe incorrect :(", "error")
+                print("No\n")
+        elif request.method == "POST":
+            flash("Echec de la connexion, vérifiez les informations saisies", "error")
         return render_template("auth/login.html", title="EPyTodo | Connexion :)",
-                               myContent="Connexion à l'espace membre EPyTodo")
+                                   myContent="connect a user")
+
