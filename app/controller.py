@@ -20,9 +20,9 @@ class UserController(object):
         if request.method == "POST" and username and password_ns:
             password = hashlib.sha3_256(str(password_ns).encode('utf-8')).hexdigest()
             UserModel.user_add(data, username, password)
-            flash("Création de votre compte réussie :)")
+            flash("Création de votre compte réussie :)", "success")
         elif request.method == "POST":
-            flash("Echec de la création de votre compte :(, vérifiez les informations saisies")
+            flash("Echec de la création de votre compte :(, vérifiez les informations saisies", "error")
 
         return render_template("auth/register.html", title="EPyTodo | Inscription :)",
                       myContent="S'inscrire à l'espace membre EPyTodo")
