@@ -3,6 +3,18 @@
 <div class="container">
 <div class="card bg-light">
 <article class="card-body mx-auto" style="max-width: 400px;">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                <span>{{ message }}</span>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
 	<h4 class="card-title mt-3 text-center">Créer un compte</h4>
 	<p class="text-center">Profitez d'EPyTodo en vous enregistrant.</p>
 	<form method="POST" action="{{ url_for('add_user_noapi') }}">

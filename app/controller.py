@@ -18,6 +18,8 @@ class UserController(object):
         username = request.form.get('username', data)
         password_ns = request.form.get('password', data)
         password = hashlib.sha3_256(str(password_ns).encode('utf-8')).hexdigest()
+        if request.method == "POST":
+            flash("Création de votre compte réussie :)")
         #username = request.args['username']
         #print ("Le user est :" + username)
         #print (request.form.getlist(key=db_linkage))
