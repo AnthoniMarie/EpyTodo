@@ -17,6 +17,8 @@ class UserController(object):
     def user_add(data):
         username = request.form.get('username', None)
         password_ns = request.form.get('password', None)
+        test = UserModel.verif_user_existence(data, username)
+        print(test)
         if request.method == "POST" and username and password_ns:
             password = hashlib.sha3_256(str(password_ns).encode('utf-8')).hexdigest()
             UserModel.user_add(data, username, password)
