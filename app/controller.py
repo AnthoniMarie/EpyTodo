@@ -15,7 +15,10 @@ import hashlib
 
 class UserController(object):
     def user_add(data):
-        username = "oui"
+        username = request.form.get('username', data)
+        #username = request.args['username']
+        #print ("Le user est :" + username)
+        #print (request.form.getlist(key=db_linkage))
         #username = request.form.get['username']
         #userna = UserModel.user_add(data)
         #username = request.args['username']
