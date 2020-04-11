@@ -28,7 +28,7 @@ class UserController(object):
             flash("Echec de la création de votre compte :(, vérifiez les informations saisies", "error")
 
         return render_template("auth/register.html", title="EPyTodo | Inscription :)",
-                      myContent="S'inscrire à l'espace membre EPyTodo")
+                      myContent="register a new user")
     def user_login(data):
         username = request.form.get('username', data)
         password = request.form.get('password', data)
@@ -44,5 +44,5 @@ class UserController(object):
             flash("Wrong Username/Password :(")
             print("No\n")
         return render_template("auth/login.html", title="EPyTodo | Connexion :)",
-                                   myContent="Connexion à l'espace membre EPyTodo")
+                                   myContent="connect a user")
 
