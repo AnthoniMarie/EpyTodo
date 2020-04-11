@@ -31,9 +31,6 @@ class UserModel(object):
             if existence:
                 print ("user exist")
                 return jsonify(result="successfully checked account")
-            else:
-                print ("user doesnt not exit")
-                return jsonify(result="error")
         except:
             return jsonify(error="an error occured")
 class TaskModel(object):
