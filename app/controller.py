@@ -15,20 +15,17 @@ import hashlib
 
 class UserController(object):
     def user_add(data):
-        username = request.form.get('username', data)
-        password_ns = request.form.get('password', data)
-        password = hashlib.sha3_256(str(password_ns).encode('utf-8')).hexdigest()
-        if request.method == "POST" and username and password:
+        username = request.form.get('username', None)
+        password_ns = request.form.get('password', None)
+        if request.method == "POST" and username and password_ns:
+            password = hashlib.sha3_256(str(password_ns).encode('utf-8')).hexdigest()
+            UserModel.user_add(data, username, password)
             flash("Création de votre compte réussie :)")
-        #username = request.args['username']
-        #print ("Le user est :" + username)
-        #print (request.form.getlist(key=db_linkage))
-        #username = request.form.get['username']
-        #userna = UserModel.user_add(data)
-        #username = request.args['username']
-        #password = request.args['password']
+        elif request.method == "POST":
+            flash("Echec de la création de votre compte :(, vérifiez les informations saisies")
+
         return render_template("auth/register.html", title="EPyTodo | Inscription :)",
-                      myContent="S'inscrire à l'espace membre EPyTodo", data=UserModel.user_add(data, username, password))
+                      myContent="S'inscrire à l'espace membre EPyTodo")
     def user_login(data):
         print ("test")
         return render_template("auth/login.html", title="EPyTodo | Connexion :)",
