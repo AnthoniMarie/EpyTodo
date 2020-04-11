@@ -17,12 +17,27 @@ class UserModel(object):
         request = cursor.execute("SELECT * FROM user;")
         data = cursor.fetchall()
         return jsonify(username=data)
-    def user_add(data):
+    def user_add(data, username, password):
         try:
-            username = request.args['username']
-            cursor.execute("INSERT INTO user (username, password) VALUES (%s, %s)", (username, "pass_test"))
+            #username = request.form['username']
+            #print ("LE USER =", username)
+            cursor.execute("INSERT INTO user (username, password) VALUES (%s, %s)", (username, password))
             cursor.connection.commit()
             return jsonify(result="successfully created account")
         except:
             return jsonify(error="an error occured")
 
+class TaskModel(object):
+    def task_add(data):
+        try:
+            title = request.args['title']
+            #end  = cursor.execute("SELECT TIMESTAMP('2020-12-01');")
+            #begin = cursor.execute("SELECT TIMESTAMP('2001-09-11');")
+            #begin = request.args['begin']
+            #end = request.args['end']
+            #status = request.args['status']
+            cursor.execute("INSERT INTO task (title) VALUES (%s)", (title))
+            cursor.connection.commit()
+            return jsonify(result="Task created successfully")
+        except:
+            return jsonify(result ="an error occured")
