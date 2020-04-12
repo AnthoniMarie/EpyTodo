@@ -1,10 +1,12 @@
 {% include "partials/header.html" %}
-<p>Liste des tâches</p>
-<div>class="content-section">
-    <h3>Current Balance Sheet Statements on file</h3>
-    <ul class="list-group">
-        {% for key, value in task.items() %}
-        <li><a href="{{ value }}">{{ key }}</a></li>
-        {% endfor %}
-    </ul></div>
+<div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <h4 style="text-align: center">
+                Liste des tâches
+            </h4>
+            <p>{{ task }}</p>
+        </div>
+      </div>
+    </div>
 {% include "partials/footer.html" %}

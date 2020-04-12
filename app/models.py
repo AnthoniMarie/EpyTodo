@@ -60,4 +60,5 @@ class TaskModel(object):
     def display_task(data):
         cursor.execute("SELECT * FROM task;")
         data = cursor.fetchall()
-        return jsonify(task=data)
+        #data = {"test": 1, "test2": 2, "test3": 3}
+        return json.dumps(data,indent=4)

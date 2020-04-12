@@ -54,7 +54,16 @@ class UserController(object):
 
 class TaskController(object):
     def task_list(data):
-        popo = TaskModel.display_task(data)
+        #print(task['title'])
+        title = TaskModel.display_task(data)
+        vache = "t"
+        #title = request.json_module.request.args.get('title')
+        #title = json.loads(request.get_data().decode("utf-8"))
+        print("EN DESSSSOSUUOSUOSUS")
+        print (vache)
+
+        #html_item = json.dumps(title)
+
         return render_template("tasks/list.html", title="EPyTodo | Liste des tâches",
-                           myContent="view all user tasks"), render_template("task/list.html",task=popo)
+                           myContent="view all user tasks", task=title)
 
