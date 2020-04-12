@@ -38,3 +38,6 @@ def task_list():
 @app.route('/user/task/add', methods=['GET', 'POST'])
 def task_add():
     return controller.TaskController.task_add(db_linkage)
+@app.route('/user/task/del/<task_id>', methods=['GET', 'POST'])
+def task_del(task_id):
+    return controller.TaskController.task_del(db_linkage, task_id)

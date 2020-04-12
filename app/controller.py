@@ -71,5 +71,8 @@ class TaskController(object):
         elif request.method == "POST":
             flash("Echec de la création de votre tâche :(, vérifiez les informations saisies", "error")
         return redirect('/user/task')
+    def task_del(data, task_id):
+        TaskModel.task_del(data, task_id)
+        return redirect('/user/task')
 
 
