@@ -59,7 +59,8 @@ class TaskController(object):
                            myContent="view all user tasks", task=title)
     def task_add(data):
         title = request.form.get('title', None)
-        json = TaskModel.task_add(data, title)
-        return json
+        if request.method == "POST" and title:
+            TaskModel.task_add(data, title)
+        return redirect('/user/task')
 
 
