@@ -6,12 +6,7 @@
 ## models.py
 ##
 
-from flask import *
-from config import *
 from app import *
-import pymysql as sql
-import hashlib
-from datetime import datetime
 
 class UserModel(object):
     def get_users_list(data):

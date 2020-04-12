@@ -6,7 +6,6 @@
 ## __init__.py
 ##
 
-import os
 from flask import *
 from config import *
 import pymysql as sql
