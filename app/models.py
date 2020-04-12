@@ -59,6 +59,7 @@ class TaskModel(object):
             return jsonify(result ="an error occured")
     def display_task(data):
         cursor.execute("SELECT * FROM task;")
+        db_linkage.commit()
+        #data = {"test": 123456789, "test2": 2, "test3": 3}
         data = cursor.fetchall()
-        #data = {"test": 1, "test2": 2, "test3": 3}
-        return json.dumps(data,indent=4)
+        return jsonify(task=data)
