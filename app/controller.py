@@ -33,7 +33,6 @@ class UserController(object):
     def user_login(data):
         password = hashlib.sha3_256(str(request.form.get('password', data)).encode('utf-8')).hexdigest()
         username = request.form.get('username', data)
-        #UserModel.verif_user_credentials(data, username, password)
         if request.method == "POST" and username and password:
             if UserModel.verif_user_credentials(data, username, password) != None:
                 session['user_authenticated'] = True
@@ -70,6 +69,10 @@ class TaskController(object):
                 flash("Echec et mat, il y a déja une tâche qui existe", "error")
         elif request.method == "POST":
             flash("Echec de la création de votre tâche :(, vérifiez les informations saisies", "error")
+        return redirect('/user/task')
+    def task_del(data, task_id):
+        TaskModel.task_del(data, task_id)
+        flash("Cette tâche a bien été supprimée", "success")
         return redirect('/user/task')
 
 

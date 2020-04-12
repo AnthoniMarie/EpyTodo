@@ -65,3 +65,11 @@ class TaskModel(object):
                 return jsonify(result="Task already exist")
         except:
             return jsonify(error="All is good")
+    def task_del(data, task_id):
+        try:
+            cursor.execute("DELETE FROM task WHERE task_id = (%s)", task_id)
+            db_linkage.commit()
+            return jsonify(result="Deleted task successfully")
+        except:
+            print(task_id)
+            return jsonify(result="an error occured")

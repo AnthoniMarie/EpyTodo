@@ -24,7 +24,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#about">A propos</a>
+                        <a class="nav-link js-scroll-trigger" href="{{ url_for('route_home') }}#about">A propos</a>
                     </li>
                     {% if session['user_authenticated'] %}
                     <li class="nav-item">
