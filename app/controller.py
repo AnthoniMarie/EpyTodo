@@ -62,9 +62,12 @@ class TaskController(object):
         begin = request.form.get('begin', None)
         end = request.form.get('end', None)
         status = request.form.get('status', None)
-        if request.method == "POST" and title:
-            TaskModel.task_add(data, title, begin, end, status)
-            flash("Succès de la création de tâche :)", "success")
+        if request.method == "POST" and title and begin and end and status:
+            if TaskModel.verif_task_existence(data, title) == None:
+                TaskModel.task_add(data, title, begin, end, status)
+                flash("Succès de la création de tâche :)", "success")
+            else:
+                flash("Echec et mat, il y a déja une tâche qui existe", "error")
         elif request.method == "POST":
             flash("Echec de la création de votre tâche :(, vérifiez les informations saisies", "error")
         return redirect('/user/task')

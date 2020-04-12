@@ -57,3 +57,11 @@ class TaskModel(object):
         db_linkage.commit()
         data = cursor.fetchall()
         return data
+    def verif_task_existence(data, title):
+        try:
+            cursor.execute("SELECT * FROM task WHERE title = (%s)", title)
+            existence = cursor.fetchone()
+            if existence:
+                return jsonify(result="Task already exist")
+        except:
+            return jsonify(error="All is good")
