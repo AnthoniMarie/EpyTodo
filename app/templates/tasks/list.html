@@ -1,0 +1,32 @@
+{% include "partials/header.html" %}
+<div class="container">
+   <div class="row">
+      <div class="col-lg-8 mx-auto">
+      <br>
+         <h4 style="text-align: center">
+            Liste des tâches
+         </h4>
+         <table class="table">
+            <thead>
+               <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Nom de la tâche</th>
+                  <th scope="col">Date de début</th>
+                  <th scope="col">Date de fin</th>
+               </tr>
+            </thead>
+            <tbody>
+               {% for row in task %}
+               <tr>
+                  <td>{{row[0]}}</td>
+                  <td>{{row[1]}}</td>
+                  <td>{{row[2]}}</td>
+                  <td>{{row[3]}}</td>
+               </tr>
+               {% endfor %}
+            </tbody>
+         </table>
+      </div>
+   </div>
+</div>
+{% include "partials/footer.html" %}

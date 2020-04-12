@@ -10,6 +10,9 @@
 }
 </style>
 <div class="container">
+{% if session['user_authenticated'] %}
+    TEST
+{% endif %}
 <div class="card bg-light">
 <article class="card-body mx-auto" style="max-width: 400px;">
     {% with messages = get_flashed_messages(with_categories=true) %}

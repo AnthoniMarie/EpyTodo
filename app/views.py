@@ -32,13 +32,12 @@ def task_add():
 @app.route('/signin', methods=['GET', 'POST'])
 def login_user():
     return controller.UserController.user_login(db_linkage)
-
-    #return render_template("auth/register.html", title="EPyTodo | Connexion :)",
-     #                      myContent="Connexion à l'espace membre EPyTodo")
-#@app.route('/user')
-#def route_all_users():
-#    result = ""
-#    try:
+@app.route('/signout', methods=['GET', 'POST'])
+def logout_user():
+    return controller.UserController.user_logout(db_linkage)
+@app.route('/user/task', methods=['GET', 'POST'])
+def task_list():
+    return controller.TaskController.task_list(db_linkage)
 
 
 
