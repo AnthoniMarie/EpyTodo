@@ -59,8 +59,11 @@ class TaskController(object):
                            myContent="view all user tasks", task=title)
     def task_add(data):
         title = request.form.get('title', None)
+        begin = request.form.get('begin', None)
+        end = request.form.get('end', None)
+        status = request.form.get('status', None)
         if request.method == "POST" and title:
-            TaskModel.task_add(data, title)
+            TaskModel.task_add(data, title, begin, end, status)
             flash("Succès de la création de tâche :)", "success")
         elif request.method == "POST":
             flash("Echec de la création de votre tâche :(, vérifiez les informations saisies", "error")

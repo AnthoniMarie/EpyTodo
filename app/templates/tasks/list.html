@@ -27,6 +27,26 @@
 		 </div>
         <input name="title" class="form-control" placeholder="Titre" type="text" id="title">
     </div>
+          <div class="form-group input-group">
+		<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-message"></i> </span>
+		 </div>
+        <input type="date" class="form-control" id="begin" name="begin" placeholder="Date de début">
+    </div>
+          <div class="form-group input-group">
+		<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-message"></i> </span>
+		 </div>
+        <input type="date" class="form-control" id="end" name="end" placeholder="Date de fin">
+    </div>
+          <div class="form-group">
+    <label for="exampleFormControlSelect1">Etat</label>
+    <select class="form-control" id="status" name="status">
+      <option>not started</option>
+      <option>in progress</option>
+      <option>done</option>
+    </select>
+  </div>
     <div class="form-group">
         <button type="submit" class="btn btn-primary btn-block"> Créer </button>
     </div>
@@ -65,6 +85,7 @@
                   <th scope="col">Nom de la tâche</th>
                   <th scope="col">Date de début</th>
                   <th scope="col">Date de fin</th>
+                  <th scope="col">Etat</th>
                </tr>
             </thead>
             <tbody>
@@ -74,6 +95,7 @@
                   <td>{{row[1]}}</td>
                   <td>{{row[2]}}</td>
                   <td>{{row[3]}}</td>
+                  <td>{{row[4]}}</td>
                </tr>
                {% endfor %}
             </tbody>
