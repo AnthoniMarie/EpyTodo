@@ -61,6 +61,9 @@ class TaskController(object):
         title = request.form.get('title', None)
         if request.method == "POST" and title:
             TaskModel.task_add(data, title)
+            flash("Succès de la création de tâche :)", "success")
+        elif request.method == "POST":
+            flash("Echec de la création de votre tâche :(, vérifiez les informations saisies", "error")
         return redirect('/user/task')
 
 
