@@ -73,6 +73,7 @@ class TaskController(object):
         return redirect('/user/task')
     def task_del(data, task_id):
         TaskModel.task_del(data, task_id)
+        flash("Cette tâche a bien été supprimée", "success")
         return redirect('/user/task')
 
 
