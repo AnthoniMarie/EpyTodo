@@ -2,53 +2,54 @@
 <html lang="fr">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="{{ description }}">
-  <meta name="author" content="">
-  <meta name="keywords" content="epitech, 42, mouli, tony">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="{{ description }}">
+    <meta name="author" content="">
+    <meta name="keywords" content="epitech, 42, mouli, tony">
 
-  <title>{{ title }}</title>
+    <title>{{ title }}</title>
 
-  <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../static/css/scrolling-nav.css" rel="stylesheet">
+    <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/scrolling-nav.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="{{ url_for('route_home') }}">{{ title }}</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about">A propos</a>
-          </li>
-            {% if session['user_authenticated'] %}
-                <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="{{ url_for('task_list') }}">Panel</a>
-          </li>
-                <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="{{ url_for('logout_user') }}">Déconnexion</a>
-          </li>
-            {% elif not session['user_authenticated'] %}
-            <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="{{ url_for('login_user') }}">Connexion</a>
-          </li>
-            <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="{{ url_for('add_user_noapi') }}">Inscription</a>
-          </li>
-            {% endif %}
-        </ul>
-      </div>
-    </div>
-  </nav>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="{{ url_for('route_home') }}">{{ title }}</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#about">A propos</a>
+                    </li>
+                    {% if session['user_authenticated'] %}
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="{{ url_for('task_list') }}">Panel</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="{{ url_for('logout_user') }}">Déconnexion</a>
+                    </li>
+                    {% elif not session['user_authenticated'] %}
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="{{ url_for('login_user') }}">Connexion</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="{{ url_for('add_user_noapi') }}">Inscription</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-  <header class="bg-primary text-white">
-    <div class="container text-center">
-      <h1>S'organiser dans son travail, avec simplicité.</h1>
-      <p class="lead">Avec EPyTodo, n'oubliez plus jamais quoi faire lors de vos projets, organisez et enregistrez vos tâches<br>avec simplicité.</p>
-    </div>
-  </header>
+    <header class="bg-primary text-white">
+        <div class="container text-center">
+            <h1>S'organiser dans son travail, avec simplicité.</h1>
+            <p class="lead">Avec EPyTodo, n'oubliez plus jamais quoi faire lors de vos projets, organisez et enregistrez vos tâches
+                <br>avec simplicité.</p>
+        </div>
+    </header>
