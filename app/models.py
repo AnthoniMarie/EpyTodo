@@ -44,9 +44,9 @@ class UserModel(object):
             return jsonify(error="an error occured")
 
 class TaskModel(object):
-    def task_add(data):
+    def task_add(data, title):
         try:
-            title = request.args['title']
+            #title = request.args['title']
             #end  = cursor.execute("SELECT TIMESTAMP('2020-12-01');")
             #begin = cursor.execute("SELECT TIMESTAMP('2001-09-11');")
             #begin = request.args['begin']
