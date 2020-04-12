@@ -5,8 +5,31 @@
             <h4 style="text-align: center">
                 Liste des tâches
             </h4>
-            <p>{{ task }}</p>
-            <td>{{task.t_title}}</td>
+        <table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>title</th>
+        <th>date start</th>
+        <th>date end</th>
+    </tr>
+    </thead>
+    <tbody>
+        {% for row in task %}
+            <tr>
+                <td>{{row[0]}}</td>
+                <td>{{row[1]}}</td>
+                <td>{{row[2]}}</td>
+                <td>{{row[3]}}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+
+
+
         </div>
       </div>
     </div>
