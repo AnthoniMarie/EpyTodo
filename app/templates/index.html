@@ -1,23 +1,22 @@
 {% include "partials/header.html" %}
-  <section id="about">
+<section id="about">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-8 mx-auto">
-            {% if session['user_authenticated'] %}
-            <h3 style="text-align: center">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                {% if session['user_authenticated'] %}
+                <h3 style="text-align: center">
                 Bienvenue, {{session.username}}
-            </h3>
-            {% endif %}
-          <h2>EPyTodo c'est quoi ?</h2>
-          <p class="lead">EPyTodo c'est votre nouveau moyen pour vous rappeler des tâches que vous avez à faire et ainsi mieux vous organiser.</p>
-          <ul>
-            <li>Facilité</li>
-            <li>Simplicité</li>
-            <li>Made in Epitech</li>
-          </ul>
+            </h3> {% endif %}
+                <h2>EPyTodo c'est quoi ?</h2>
+                <p class="lead">EPyTodo c'est votre nouveau moyen pour vous rappeler des tâches que vous avez à faire et ainsi mieux vous organiser.</p>
+                <ul>
+                    <li>Facilité</li>
+                    <li>Simplicité</li>
+                    <li>Made in Epitech</li>
+                </ul>
+            </div>
         </div>
-      </div>
     </div>
-  </section>
+</section>
 
 {% include "partials/footer.html" %}

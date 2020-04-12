@@ -2,50 +2,46 @@
 
 <style>
     .alert.success {
-  background-color: green;
-}
+        background-color: green;
+    }
 
-.alert.error {
-  background-color: #ff7200;
-}
+    .alert.error {
+        background-color: #ff7200;
+    }
 </style>
 <div class="container">
-<div class="card bg-light">
-<article class="card-body mx-auto" style="max-width: 400px;">
-    {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-        {% for category, message in messages %}
+    <div class="card bg-light">
+        <article class="card-body mx-auto" style="max-width: 400px;">
+            {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %} {% for category, message in messages %}
             <div class="alert alert-primary {{ category }} alert-dismissible fade show" role="alert">
                 <span>{{ message }}</span>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-        {% endfor %}
-    {% endif %}
-{% endwith %}
-	<h4 class="card-title mt-3 text-center">Créer un compte</h4>
-	<p class="text-center">Profitez d'EPyTodo en vous enregistrant.</p>
-	<form method="POST" action="{{ url_for('add_user_noapi') }}">
-	<div class="form-group input-group">
-		<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-		 </div>
-        <input name="username" class="form-control" placeholder="Pseudonyme" type="text" id="username">
+            {% endfor %} {% endif %} {% endwith %}
+            <h4 class="card-title mt-3 text-center">Créer un compte</h4>
+            <p class="text-center">Profitez d'EPyTodo en vous enregistrant.</p>
+            <form method="POST" action="{{ url_for('add_user_noapi') }}">
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                    </div>
+                    <input name="username" class="form-control" placeholder="Pseudonyme" type="text" id="username">
+                </div>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                    </div>
+                    <input name="password" class="form-control" placeholder="Mot de passe" type="password" id="password">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block"> Créer compte </button>
+                </div>
+                <p class="text-center">Vous avez un compte? <a href="{{ url_for('login_user') }}">Connexion</a> </p>
+            </form>
+        </article>
     </div>
-    <div class="form-group input-group">
-    	<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-		</div>
-        <input name="password" class="form-control" placeholder="Mot de passe" type="password" id="password">
-    </div>
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary btn-block"> Créer compte  </button>
-    </div>
-    <p class="text-center">Vous avez un compte? <a href="{{ url_for('login_user') }}">Connexion</a> </p>
-</form>
-</article>
-</div>
 
 </div>
 

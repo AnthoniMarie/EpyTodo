@@ -26,9 +26,6 @@ def add_user():
 @app.route('/register', methods=['GET', 'POST'])
 def add_user_noapi():
     return controller.UserController.user_add(db_linkage)
-@app.route('/user/add/task', methods=['GET', 'POST'])
-def task_add():
-    return models.TaskModel.task_add(db_linkage)
 @app.route('/signin', methods=['GET', 'POST'])
 def login_user():
     return controller.UserController.user_login(db_linkage)
@@ -38,6 +35,6 @@ def logout_user():
 @app.route('/user/task', methods=['GET', 'POST'])
 def task_list():
     return controller.TaskController.task_list(db_linkage)
-
-
-
+@app.route('/user/task/add', methods=['GET', 'POST'])
+def task_add():
+    return controller.TaskController.task_add(db_linkage)

@@ -11,6 +11,7 @@ from config import *
 from app import *
 import pymysql as sql
 import hashlib
+from datetime import datetime
 
 class UserModel(object):
     def get_users_list(data):
@@ -44,15 +45,9 @@ class UserModel(object):
             return jsonify(error="an error occured")
 
 class TaskModel(object):
-    def task_add(data):
+    def task_add(data, title, begin, end, status):
         try:
-            title = request.args['title']
-            #end  = cursor.execute("SELECT TIMESTAMP('2020-12-01');")
-            #begin = cursor.execute("SELECT TIMESTAMP('2001-09-11');")
-            #begin = request.args['begin']
-            #end = request.args['end']
-            #status = request.args['status']
-            cursor.execute("INSERT INTO task (title) VALUES (%s)", (title))
+            cursor.execute("INSERT INTO task (title, begin, end, status) VALUES (%s, %s, %s, %s)", (title, begin, end, status))
             cursor.connection.commit()
             return jsonify(result="Task created successfully")
         except:
@@ -60,7 +55,13 @@ class TaskModel(object):
     def display_task(data):
         cursor.execute("SELECT * from task;")
         db_linkage.commit()
-        #data = {"test": 123456789, "test2": 2, "test3": 3}
         data = cursor.fetchall()
-        print(data)
         return data
+    def verif_task_existence(data, title):
+        try:
+            cursor.execute("SELECT * FROM task WHERE title = (%s)", title)
+            existence = cursor.fetchone()
+            if existence:
+                return jsonify(result="Task already exist")
+        except:
+            return jsonify(error="All is good")

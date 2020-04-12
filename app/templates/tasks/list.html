@@ -1,32 +1,103 @@
 {% include "partials/header.html" %}
+
+<style>
+    .alert.success {
+        background-color: green;
+    }
+
+    .alert.error {
+        background-color: #ff7200;
+    }
+</style>
+
+<div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Créer une tâche</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="POST" action="{{ url_for('task_add') }}">
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-message"></i> </span>
+                    </div>
+                    <input name="title" class="form-control" placeholder="Titre" type="text" id="title">
+                </div>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-message"></i> </span>
+                    </div>
+                    <input type="date" class="form-control" id="begin" name="begin" placeholder="Date de début">
+                </div>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-message"></i> </span>
+                    </div>
+                    <input type="date" class="form-control" id="end" name="end" placeholder="Date de fin">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Etat</label>
+                    <select class="form-control" id="status" name="status">
+                        <option>not started</option>
+                        <option>in progress</option>
+                        <option>done</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block"> Créer </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="text-center">
+    <a style="color: #005DFF" ; href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalContactForm"><span class="glyphicon glyphicon-plus"></span>Ajouter une Tâche</a>
+</div>
+
 <div class="container">
-   <div class="row">
-      <div class="col-lg-8 mx-auto">
-      <br>
-         <h4 style="text-align: center">
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %} {% for category, message in messages %}
+    <div class="alert alert-primary {{ category }} alert-dismissible fade show" role="alert">
+        <span>{{ message }}</span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %} {% endif %} {% endwith %}
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <br>
+            <h4 style="text-align: center">
             Liste des tâches
          </h4>
-         <table class="table">
-            <thead>
-               <tr>
-                  <th scope="col">ID</th>
-                  <th scope="col">Nom de la tâche</th>
-                  <th scope="col">Date de début</th>
-                  <th scope="col">Date de fin</th>
-               </tr>
-            </thead>
-            <tbody>
-               {% for row in task %}
-               <tr>
-                  <td>{{row[0]}}</td>
-                  <td>{{row[1]}}</td>
-                  <td>{{row[2]}}</td>
-                  <td>{{row[3]}}</td>
-               </tr>
-               {% endfor %}
-            </tbody>
-         </table>
-      </div>
-   </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nom de la tâche</th>
+                        <th scope="col">Date de début</th>
+                        <th scope="col">Date de fin</th>
+                        <th scope="col">Etat</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in task %}
+                    <tr>
+                        <td>{{row[0]}}</td>
+                        <td>{{row[1]}}</td>
+                        <td>{{row[2]}}</td>
+                        <td>{{row[3]}}</td>
+                        <td>{{row[4]}}</td>
+                        <td><a style="color: #005DFF" ; href="" class="btn btn-default btn-rounded mb-4"><span class="glyphicon glyphicon-plus"></span>Supprimer</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 {% include "partials/footer.html" %}
