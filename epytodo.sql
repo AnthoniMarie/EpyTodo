@@ -15,6 +15,6 @@ CREATE TABLE task (
     status ENUM("not started", "in progress", "done") DEFAULT "not started"
 );
 CREATE TABLE user_has_task (
-    fk_user_id VARCHAR(50) NOT NULL,
-    fk_task_id VARCHAR(50) NOT NULL
+    fk_user_id VARCHAR(128) NOT NULL,
+    fk_task_id VARCHAR(128) NOT NULL
 );
