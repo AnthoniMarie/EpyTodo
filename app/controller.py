@@ -33,7 +33,6 @@ class UserController(object):
     def user_login(data):
         password = hashlib.sha3_256(str(request.form.get('password', data)).encode('utf-8')).hexdigest()
         username = request.form.get('username', data)
-        #UserModel.verif_user_credentials(data, username, password)
         if request.method == "POST" and username and password:
             if UserModel.verif_user_credentials(data, username, password) != None:
                 session['user_authenticated'] = True
