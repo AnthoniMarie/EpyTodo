@@ -20,7 +20,7 @@ class UserController(object):
         password_ns = request.form.get('password', None)
         if request.method == "POST" and username and password_ns:
             if UserModel.verif_user_existence(data, username) == None:
-                password = hashlib.sha3_256(str(password_ns).encode('utf-8')).hexdigest()
+                password = hashlib.md5(str(password_ns).encode('utf-8')).hexdigest()
                 UserModel.user_add(data, username, password)
                 flash("Création de votre compte réussie :)", "success")
             else:
@@ -31,7 +31,7 @@ class UserController(object):
         return render_template("auth/register.html", title="EPyTodo | Inscription :)",
                       myContent="register a new user")
     def user_login(data):
-        password = hashlib.sha3_256(str(request.form.get('password', data)).encode('utf-8')).hexdigest()
+        password = hashlib.md5(str(request.form.get('password', data)).encode('utf-8')).hexdigest()
         username = request.form.get('username', data)
         if request.method == "POST" and username and password:
             if UserModel.verif_user_credentials(data, username, password) != None:
