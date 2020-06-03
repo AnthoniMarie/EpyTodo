@@ -7,7 +7,7 @@
 ##
 
 #SECRET APP KEY
-SECRET_KEY = "weey0y#*$=cr09$-7p!zj96-5636e(sx8+pb*0h4rpv8r$y)8k"
+SECRET_KEY = "od34a4#4k&hh70^750ls=k!4u)q5f^5=m6&^7x31=z=nl&n5u4"
 #DEPLOYMENT GESTURE
 DEBUG	      	= True
 TESTING 	    = True
